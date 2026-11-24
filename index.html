@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blog escolar do CETI Maria Pires Lima: notícias, eventos, projetos e conquistas da comunidade escolar.">
+  <title>Blog MPL | CETI Maria Pires Lima</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Biblioteca do Supabase (banco de dados) e configuração do projeto -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/dados.js" defer></script>
+  <script src="js/video.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <!-- Símbolos SVG locais: os ícones funcionam sem internet ou bibliotecas. -->
+  <svg class="banco-icones" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="saude" viewBox="0 0 48 48"><path d="M24 41 7 24C-4 12 12-2 24 12 36-2 52 12 41 24Z"/><path d="M11 24h8l4-8 4 16 4-8h7"/></symbol>
+    <symbol id="cultura" viewBox="0 0 48 48"><path d="M8 5h32v38H8Z M16 5v38M32 5v38M8 14h8m-8 10h8m-8 10h8m16-20h8m-8 10h8m-8 10h8"/><path d="m21 17 8 7-8 7Z"/></symbol>
+    <symbol id="entrevista" viewBox="0 0 48 48"><rect x="17" y="3" width="14" height="25" rx="7"/><path d="M10 21v3a14 14 0 0 0 28 0v-3M24 38v7m-9 0h18M20 11h8m-8 6h8"/></symbol>
+    <symbol id="livro" viewBox="0 0 48 48"><path d="M24 12C17 7 10 7 4 9v29c7-2 14-1 20 3 6-4 13-5 20-3V9c-6-2-13-2-20 3ZM24 12v29M9 15h9m-9 6h9m-9 6h9m12-12h9m-9 6h9m-9 6h9"/></symbol>
+    <symbol id="esporte" viewBox="0 0 48 48"><circle cx="24" cy="24" r="19"/><path d="M24 14l9 6.5-3.4 10.5H18.4L15 20.5Z"/><path d="M24 5v9M33 20.5l8.5-3M29.6 31l5.4 8M18.4 31 13 39M15 20.5l-8.5-3"/></symbol>
+    <symbol id="calendario" viewBox="0 0 48 48"><rect x="5" y="9" width="38" height="34" rx="3"/><path d="M5 19h38M15 4v11M33 4v11M13 26h3m6 0h3m6 0h3m-21 7h3m6 0h3m6 0h3"/></symbol>
+    <symbol id="lampada" viewBox="0 0 48 48"><path d="M17 31c0-5-6-7-6-15a13 13 0 0 1 26 0c0 8-6 10-6 15ZM17 36h14m-12 5h10M24 0v3M3 17H0m48 0h-3M6 3l4 5m32-5-4 5M20 31l-2-12 6 4 6-4-2 12"/></symbol>
+    <symbol id="trofeu" viewBox="0 0 48 48"><path d="M14 5h20v12c0 10-20 10-20 0ZM14 9H5v7c0 7 6 10 11 10M34 9h9v7c0 7-6 10-11 10M24 26v12m-10 5h20l-3-5H17Z"/><path d="m24 10 2 4 5 1-4 3 1 5-4-3-4 3 1-5-4-3 5-1Z"/></symbol>
+    <symbol id="busca" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></symbol>
+    <symbol id="seta" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="folha" viewBox="0 0 40 44"><path d="M9 39 3 43V6a4 4 0 0 1 4-4h26a4 4 0 0 1 4 4v33H9Z"/><path d="M15 29C7 15 20 12 29 10c1 14-5 22-14 19ZM10 35l15-18"/></symbol>
+  </svg>
+
+  <a href="#conteudo" class="pular-conteudo">Pular para o conteúdo</a>
+  <header class="cabecalho">
+    <div class="container cabecalho-conteudo">
+      <a class="marca" href="index.html" aria-label="Blog MPL, página inicial">
+        <img class="marca-brasao" src="imagens/brasao-mpl.png" alt="" width="48" height="48">
+        <span><strong>Blog MPL</strong><span>CETI MARIA PIRES LIMA</span></span>
+      </a>
+      <button class="botao-menu botao-icone" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+      <nav id="menu-principal" class="menu" aria-label="Navegação principal">
+        <a href="index.html" class="ativo" aria-current="page">Início</a>
+        <a href="categoria.html?categoria=Not%C3%ADcias" data-menu="noticias">Notícias</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="conquistas.html">Conquistas</a>
+        <a href="sobre.html">Sobre</a>
+      </nav>
+      <button class="botao-icone abrir-busca" type="button" aria-label="Abrir busca" aria-expanded="false" aria-controls="painel-busca"><svg aria-hidden="true"><use href="#busca"/></svg></button>
+    </div>
+    <form id="painel-busca" class="container formulario-busca" role="search" hidden>
+      <label for="termo-busca">Pesquisar publicações</label>
+      <div><input id="termo-busca" type="search" placeholder="O que você quer encontrar?" maxlength="100"><button class="botao" type="submit">Buscar</button></div>
+      <p id="resultado-busca" role="status"></p>
+    </form>
+  </header>
+
+  <main id="conteudo" class="container">
+    <!-- Apresentação: três destaques com navegação manual. -->
+    <section class="apresentacao" aria-labelledby="titulo-apresentacao" aria-roledescription="carrossel">
+      <div class="apresentacao-texto">
+        <h1 id="titulo-apresentacao">BEM-VINDOS AO<br>BLOG MPL!</h1>
+        <p id="texto-apresentacao">Espaço para compartilhar ideias,<br>conquistas e histórias.</p>
+        <button class="botao" id="acao-apresentacao" type="button">Saiba mais</button>
+      </div>
+      <div class="apresentacao-imagem"><img src="imagens/escola.png" width="1536" height="1024" alt="Ilustração de uma escola com fachada branca e jardim" fetchpriority="high"><!-- Vídeo do slide (o script.js preenche quando o slide tem "video") --><div class="video-banner" id="video-banner" hidden></div><span class="selo-video" id="selo-video" hidden></span></div>
+      <button class="seta-carrossel anterior" type="button" aria-label="Destaque anterior"><svg aria-hidden="true"><use href="#seta"/></svg></button>
+      <button class="seta-carrossel proxima" type="button" aria-label="Próximo destaque"><svg aria-hidden="true"><use href="#seta"/></svg></button>
+      <div class="indicadores" aria-label="Escolher destaque">
+        <button class="selecionado" type="button" aria-label="Destaque 1: boas-vindas" aria-pressed="true" data-slide="0"></button>
+        <button type="button" aria-label="Destaque 2: saúde" aria-pressed="false" data-slide="1"></button>
+        <button type="button" aria-label="Destaque 3: cultura" aria-pressed="false" data-slide="2"></button>
+      </div>
+    </section>
+
+    <!-- Vídeos da escola (aparece no estilo 'vitrine'; veja js/script.js) -->
+    <section id="videos-escola" class="videos-escola" aria-labelledby="titulo-videos" hidden>
+      <div class="titulo-secao"><h2 id="titulo-videos">Vídeos da escola</h2></div>
+      <div class="lista-videos" id="lista-videos"></div>
+    </section>
+
+    <section id="destaques" class="destaques" aria-labelledby="titulo-destaques">
+      <div class="titulo-secao"><h2 id="titulo-destaques">Em destaque</h2><button type="button" id="limpar-filtro" hidden>Ver todos</button></div>
+      <article class="noticia-destaque">
+        <div class="noticia-imagem"><img id="capa-noticia" src="imagens/muda.png" width="1536" height="1024" alt="Mãos segurando uma muda verde com terra"><button class="voltar-noticia" type="button" aria-label="Publicação anterior"><svg aria-hidden="true"><use href="#seta"/></svg></button></div>
+        <div class="noticia-conteudo">
+          <h3><a id="titulo-noticia" href="publicacao.html?id=feira-ciencias">Feira de Ciências movimenta a escola</a></h3>
+          <p id="resumo-noticia">Alunos apresentam projetos desenvolvidos ao longo do semestre com criatividade e inovação.</p>
+          <a class="botao botao-contorno" id="ler-noticia" href="publicacao.html?id=feira-ciencias">Leia mais</a>
+        </div>
+        <button class="avancar-noticia botao-icone" type="button" aria-label="Próxima publicação"><svg aria-hidden="true"><use href="#seta"/></svg></button>
+      </article>
+      <p class="sem-resultados" hidden>Nenhuma publicação encontrada. Tente outra palavra ou escolha uma categoria.</p>
+    </section>
+
+    <section class="categorias" aria-labelledby="titulo-categorias">
+      <div class="titulo-secao"><h2 id="titulo-categorias">Categorias / Seções</h2><a class="ver-categorias" href="categoria.html">Todas as categorias</a></div>
+      <ul class="grade-categorias">
+        <li><a href="categoria.html?categoria=Not%C3%ADcias"><svg aria-hidden="true"><use href="#livro"/></svg><h3>Notícias</h3><p>O cotidiano, os projetos e as novidades da nossa escola.</p></a></li>
+        <li><a href="saude.html"><svg aria-hidden="true"><use href="#saude"/></svg><h3>Saúde</h3><p>Campanhas e projetos de saúde e bem-estar.</p></a></li>
+        <li><a href="cultura.html"><svg aria-hidden="true"><use href="#cultura"/></svg><h3>Cultura e Entretenimento</h3><p>Arte, criatividade e expressões da nossa comunidade.</p></a></li>
+        <li><a href="entrevistas.html"><svg aria-hidden="true"><use href="#entrevista"/></svg><h3>Entrevistas</h3><p>Conversas e histórias de quem faz parte da escola.</p></a></li>
+        <li><a href="esportes.html"><svg aria-hidden="true"><use href="#esporte"/></svg><h3>Esportes</h3><p>Jogos, campeonatos e atividades físicas da escola.</p></a></li>
+      
+      </ul>
+    </section>
+  </main>
+
+  <footer class="rodape"><div class="container rodape-conteudo"><p>© 2026 Blog MPL · Todos os direitos reservados. <span aria-hidden="true">·</span> <a class="link-equipe" href="login.html">Área do ADM</a></p></div></footer>
+
+  <!-- As janelas mantêm os links úteis enquanto as demais páginas não existem. -->
+  <dialog id="janela-video" class="janela-video" aria-label="Vídeo"><button type="button" class="fechar-video" id="fechar-video" aria-label="Fechar vídeo">×</button><div class="janela-video-corpo"></div></dialog>
+  <dialog id="janela-conteudo" aria-labelledby="titulo-janela"><div class="janela-cabecalho"><span>Blog MPL</span><button type="button" class="fechar-janela" aria-label="Fechar janela">×</button></div><div class="janela-corpo"><p id="categoria-janela" class="etiqueta"></p><h2 id="titulo-janela"></h2><div id="texto-janela"></div></div></dialog>
+  <noscript><p class="container aviso">Ative o JavaScript para usar os destaques, a pesquisa e a leitura das publicações demonstrativas.</p></noscript>
+</body>
+</html>

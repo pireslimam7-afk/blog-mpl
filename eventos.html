@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Blog MPL do CETI Maria Pires Lima."><title>Eventos | Blog MPL</title><link rel="stylesheet" href="css/style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script><script src="js/config.js" defer></script><script src="js/dados.js" defer></script><script src="js/comum.js" defer></script><script src="js/eventos.js" defer></script></head><body data-pagina="eventos">  <!-- Símbolos SVG locais: os ícones funcionam sem internet ou bibliotecas. -->
+  <svg class="banco-icones" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="livro" viewBox="0 0 48 48"><path d="M24 12C17 7 10 7 4 9v29c7-2 14-1 20 3 6-4 13-5 20-3V9c-6-2-13-2-20 3ZM24 12v29M9 15h9m-9 6h9m-9 6h9m12-12h9m-9 6h9m-9 6h9"/></symbol>
+    <symbol id="calendario" viewBox="0 0 48 48"><rect x="5" y="9" width="38" height="34" rx="3"/><path d="M5 19h38M15 4v11M33 4v11M13 26h3m6 0h3m6 0h3m-21 7h3m6 0h3m6 0h3"/></symbol>
+    <symbol id="lampada" viewBox="0 0 48 48"><path d="M17 31c0-5-6-7-6-15a13 13 0 0 1 26 0c0 8-6 10-6 15ZM17 36h14m-12 5h10M24 0v3M3 17H0m48 0h-3M6 3l4 5m32-5-4 5M20 31l-2-12 6 4 6-4-2 12"/></symbol>
+    <symbol id="trofeu" viewBox="0 0 48 48"><path d="M14 5h20v12c0 10-20 10-20 0ZM14 9H5v7c0 7 6 10 11 10M34 9h9v7c0 7-6 10-11 10M24 26v12m-10 5h20l-3-5H17Z"/><path d="m24 10 2 4 5 1-4 3 1 5-4-3-4 3 1-5-4-3 5-1Z"/></symbol>
+    <symbol id="busca" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></symbol>
+    <symbol id="seta" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="folha" viewBox="0 0 40 44"><path d="M9 39 3 43V6a4 4 0 0 1 4-4h26a4 4 0 0 1 4 4v33H9Z"/><path d="M15 29C7 15 20 12 29 10c1 14-5 22-14 19ZM10 35l15-18"/></symbol>
+    <symbol id="pessoa" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></symbol>
+    <symbol id="camadas" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5Z"/><path d="m3 13 9 5 9-5"/></symbol>
+    <symbol id="play" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="m10 9 5 3-5 3Z"/></symbol>
+    <symbol id="documento" viewBox="0 0 24 24"><path d="M6 2h8l5 5v15H6Z"/><path d="M14 2v5h5M9 12h7m-7 4h7"/></symbol>
+    <symbol id="baixar" viewBox="0 0 24 24"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></symbol>
+    <symbol id="casa" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 9v12h14V9"/></symbol>
+    <symbol id="cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4m8-4v4"/></symbol>
+  </svg>
+
+  <a href="#conteudo" class="pular-conteudo">Pular para o conteúdo</a>
+  <header class="cabecalho">
+    <div class="container cabecalho-conteudo">
+      <a class="marca" href="index.html" aria-label="Blog MPL, página inicial">
+        <img class="marca-brasao" src="imagens/brasao-mpl.png" alt="" width="48" height="48">
+        <span><strong>Blog MPL</strong><span>CETI MARIA PIRES LIMA</span></span>
+      </a>
+      <button class="botao-menu botao-icone" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+      <nav id="menu-principal" class="menu" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="categoria.html?categoria=Not%C3%ADcias" data-menu="noticias">Notícias</a>
+        <a href="eventos.html" class="ativo" aria-current="page">Eventos</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="conquistas.html">Conquistas</a>
+        <a href="sobre.html">Sobre</a>
+      </nav>
+      <button class="botao-icone abrir-busca" type="button" aria-label="Abrir busca" aria-expanded="false" aria-controls="painel-busca"><svg aria-hidden="true"><use href="#busca"/></svg></button>
+    </div>
+    <form id="painel-busca" class="container formulario-busca" role="search" hidden>
+      <label for="termo-busca">Pesquisar publicações</label>
+      <div><input id="termo-busca" type="search" placeholder="O que você quer encontrar?" maxlength="100"><button class="botao" type="submit">Buscar</button></div>
+      <p id="resultado-busca" role="status"></p>
+    </form>
+  </header>
+
+<main id="conteudo" class="container pagina-interna pagina-eventos">
+  <!-- Abas de categorias: iguais em todas as páginas de listas, Eventos e Projetos -->
+  <nav class="filtros-categorias" aria-label="Categorias"><a href="categoria.html">Todas</a><a href="categoria.html?categoria=Not%C3%ADcias">Notícias</a><a href="saude.html">Saúde</a><a href="cultura.html">Cultura e Entretenimento</a><a href="entrevistas.html">Entrevistas</a><a href="esportes.html">Esportes</a><a href="eventos.html" aria-current="page">Eventos</a><a href="projetos.html">Projetos</a><a href="conquistas.html">Conquistas</a></nav>
+  <!-- O eventos.js preenche esta página com os dados do banco. -->
+  <div class="grade-eventos" id="grade-eventos">
+    <div class="coluna-evento">
+      <nav class="caminho caminho-destaque" aria-label="Caminho de navegação">
+        <svg aria-hidden="true"><use href="#casa"/></svg><a href="index.html">Início</a><span>/</span><a href="eventos.html">Eventos</a><span>/</span><strong id="caminho-evento">Carregando...</strong>
+      </nav>
+
+      <article class="evento" aria-labelledby="titulo-evento">
+        <p class="situacao-evento" id="situacao-evento"></p>
+        <h1 id="titulo-evento"></h1>
+        <p class="evento-resumo" id="resumo-evento"></p>
+        <p class="evento-meta">
+          <span><svg aria-hidden="true"><use href="#pessoa"/></svg><span id="autor-evento"></span></span>
+          <span class="divisor" aria-hidden="true"></span>
+          <span><svg aria-hidden="true"><use href="#cal"/></svg><time id="data-evento"></time></span>
+        </p>
+        <img class="evento-capa" id="capa-evento" src="imagens/escola.png" alt="">
+        <div class="evento-texto" id="texto-evento"></div>
+
+        <!-- Caixas extras: só aparecem se o evento tiver vídeo, PDF ou votação -->
+        <div class="evento-extras">
+          <section class="caixa-extra" id="caixa-video" hidden>
+            <h2><svg aria-hidden="true"><use href="#play"/></svg>Assista aos melhores momentos</h2>
+            <div id="video-evento"></div>
+          </section>
+          <section class="caixa-extra" id="caixa-material" hidden>
+            <h2><svg aria-hidden="true"><use href="#documento"/></svg>Materiais</h2>
+            <p>Baixe o material do evento, com a programação e outras informações importantes.</p>
+            <a class="botao" id="pdf-evento" target="_blank" rel="noopener" download><svg aria-hidden="true"><use href="#baixar"/></svg>Baixar material (PDF)</a>
+          </section>
+          <section class="caixa-extra" id="caixa-participar" hidden>
+            <h2><svg aria-hidden="true"><use href="#camadas"/></svg>Participe</h2>
+            <p id="texto-participar"></p>
+            <a class="botao" id="link-participar"></a>
+          </section>
+        </div>
+      </article>
+
+      <section class="proximos-eventos" id="proximos" aria-labelledby="titulo-proximos" hidden>
+        <h2 id="titulo-proximos">Próximos eventos</h2>
+        <div class="lista-proximos" id="lista-proximos"></div>
+      </section>
+    </div>
+
+    <aside class="lateral-eventos" aria-labelledby="titulo-passados">
+      <div class="lateral-cabecalho"><svg aria-hidden="true"><use href="#camadas"/></svg><h2 id="titulo-passados">Eventos passados</h2></div>
+      <div class="lista-passados" id="lista-passados"></div>
+      <p class="lateral-vazia" id="sem-passados" hidden>Nenhum evento realizado ainda.</p>
+    </aside>
+  </div>
+  <p class="sem-resultados" id="sem-eventos" hidden>Nenhum evento publicado ainda. Volte em breve!</p>
+</main>  <footer class="rodape"><div class="container rodape-conteudo"><p>© 2026 Blog MPL · Todos os direitos reservados. <span aria-hidden="true">·</span> <a class="link-equipe" href="login.html">Área do ADM</a></p></div></footer>
+
+<noscript><p class="container aviso">Ative o JavaScript para usar os recursos desta página de demonstração.</p></noscript></body></html>

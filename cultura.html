@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Blog MPL do CETI Maria Pires Lima."><title>Cultura e Entretenimento | Blog MPL</title><link rel="stylesheet" href="css/style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script><script src="js/config.js" defer></script><script src="js/dados.js" defer></script><script src="js/comum.js" defer></script><script src="js/paginas.js" defer></script></head><body data-pagina="cultura">  <!-- Símbolos SVG locais: os ícones funcionam sem internet ou bibliotecas. -->
+  <svg class="banco-icones" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="livro" viewBox="0 0 48 48"><path d="M24 12C17 7 10 7 4 9v29c7-2 14-1 20 3 6-4 13-5 20-3V9c-6-2-13-2-20 3ZM24 12v29M9 15h9m-9 6h9m-9 6h9m12-12h9m-9 6h9m-9 6h9"/></symbol>
+    <symbol id="calendario" viewBox="0 0 48 48"><rect x="5" y="9" width="38" height="34" rx="3"/><path d="M5 19h38M15 4v11M33 4v11M13 26h3m6 0h3m6 0h3m-21 7h3m6 0h3m6 0h3"/></symbol>
+    <symbol id="lampada" viewBox="0 0 48 48"><path d="M17 31c0-5-6-7-6-15a13 13 0 0 1 26 0c0 8-6 10-6 15ZM17 36h14m-12 5h10M24 0v3M3 17H0m48 0h-3M6 3l4 5m32-5-4 5M20 31l-2-12 6 4 6-4-2 12"/></symbol>
+    <symbol id="trofeu" viewBox="0 0 48 48"><path d="M14 5h20v12c0 10-20 10-20 0ZM14 9H5v7c0 7 6 10 11 10M34 9h9v7c0 7-6 10-11 10M24 26v12m-10 5h20l-3-5H17Z"/><path d="m24 10 2 4 5 1-4 3 1 5-4-3-4 3 1-5-4-3 5-1Z"/></symbol>
+    <symbol id="busca" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></symbol>
+    <symbol id="seta" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="folha" viewBox="0 0 40 44"><path d="M9 39 3 43V6a4 4 0 0 1 4-4h26a4 4 0 0 1 4 4v33H9Z"/><path d="M15 29C7 15 20 12 29 10c1 14-5 22-14 19ZM10 35l15-18"/></symbol>
+  </svg>
+
+  <a href="#conteudo" class="pular-conteudo">Pular para o conteúdo</a>
+  <header class="cabecalho">
+    <div class="container cabecalho-conteudo">
+      <a class="marca" href="index.html" aria-label="Blog MPL, página inicial">
+        <img class="marca-brasao" src="imagens/brasao-mpl.png" alt="" width="48" height="48">
+        <span><strong>Blog MPL</strong><span>CETI MARIA PIRES LIMA</span></span>
+      </a>
+      <button class="botao-menu botao-icone" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+      <nav id="menu-principal" class="menu" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="categoria.html?categoria=Not%C3%ADcias" data-menu="noticias">Notícias</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="conquistas.html">Conquistas</a>
+        <a href="sobre.html">Sobre</a>
+      </nav>
+      <button class="botao-icone abrir-busca" type="button" aria-label="Abrir busca" aria-expanded="false" aria-controls="painel-busca"><svg aria-hidden="true"><use href="#busca"/></svg></button>
+    </div>
+    <form id="painel-busca" class="container formulario-busca" role="search" hidden>
+      <label for="termo-busca">Pesquisar publicações</label>
+      <div><input id="termo-busca" type="search" placeholder="O que você quer encontrar?" maxlength="100"><button class="botao" type="submit">Buscar</button></div>
+      <p id="resultado-busca" role="status"></p>
+    </form>
+  </header>
+
+<main id="conteudo" class="container pagina-interna">
+  <!-- Abas de categorias: iguais em todas as páginas de listas, Eventos e Projetos -->
+  <nav class="filtros-categorias" aria-label="Categorias"><a href="categoria.html">Todas</a><a href="categoria.html?categoria=Not%C3%ADcias">Notícias</a><a href="saude.html">Saúde</a><a href="cultura.html">Cultura e Entretenimento</a><a href="entrevistas.html">Entrevistas</a><a href="esportes.html">Esportes</a><a href="eventos.html">Eventos</a><a href="projetos.html">Projetos</a><a href="conquistas.html">Conquistas</a></nav><nav class="caminho" aria-label="Caminho de navegação"><a href="index.html">Início</a><span>/</span><span id="nome-caminho">Cultura e Entretenimento</span></nav><header class="faixa-pagina"><p class="etiqueta">Cotidiano escolar</p><h1 id="titulo-lista">Cultura e Entretenimento</h1><p id="descricao-lista">Arte, produções dos alunos e manifestações culturais da nossa comunidade.</p></header><p id="contagem-lista" role="status"></p><div class="grade-materias" id="lista-materias"></div><p id="lista-vazia" hidden>Nenhuma publicação em Cultura e Entretenimento por enquanto.</p></main>  <footer class="rodape"><div class="container rodape-conteudo"><p>© 2026 Blog MPL · Todos os direitos reservados. <span aria-hidden="true">·</span> <a class="link-equipe" href="login.html">Área do ADM</a></p></div></footer>
+
+<noscript><p class="container aviso">Ative o JavaScript para usar os recursos desta página de demonstração.</p></noscript></body></html>

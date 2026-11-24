@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Blog MPL do CETI Maria Pires Lima."><title>Editor de publicação | Blog MPL</title><link rel="stylesheet" href="css/style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script><script src="js/config.js" defer></script><script src="js/dados.js" defer></script><script src="js/comum.js" defer></script><script src="js/editor.js" defer></script></head><body data-pagina="editor"><div class="layout-painel"><aside class="menu-painel"><a class="marca-painel" href="index.html"><img class="marca-brasao" src="imagens/brasao-mpl.png" alt="" width="48" height="48"><span>Blog MPL<small>CETI MARIA PIRES LIMA</small></span></a><nav aria-label="Menu da equipe"><a href="painel.html">Painel</a><a href="editor.html">Nova publicação</a><a href="index.html">Ver blog</a><button class="sair" type="button">Sair</button></nav></aside><div class="painel-principal"><header class="topo-painel"><strong id="nome-equipe">Equipe editorial</strong><span id="modo-dados"></span></header><main id="conteudo" class="conteudo-painel"><p class="aviso-demo" hidden>Modo demonstração: os dados ficam só neste navegador. Preencha o js/config.js para usar o banco de dados.</p><a href="painel.html">Voltar para publicações</a>
+<h1 id="titulo-editor">Nova publicação</h1>
+<form id="form-editor">
+<div class="grade-editor">
+<div>
+<label for="tipo">Tipo de publicação *</label>
+<select id="tipo">
+<option value="artigo">Artigo (texto com imagem)</option>
+<option value="video">Vídeo do YouTube</option>
+<option value="enquete">Enquete</option>
+<option value="mural">Mural de fotos para votação</option>
+</select>
+<label for="titulo">Título *</label>
+<input id="titulo" maxlength="140" required>
+<label for="resumo">Resumo *</label>
+<textarea id="resumo" rows="3" maxlength="350" required></textarea>
+
+<!-- Campos que aparecem só em alguns tipos (o editor.js mostra/esconde) -->
+<div class="campo-tipo" data-tipos="video">
+<label for="video">Link do vídeo no YouTube *</label>
+<input id="video" type="url" placeholder="https://www.youtube.com/watch?v=...">
+<small>Publique o vídeo no canal da escola (pode ser "Não listado") e cole o link aqui.</small>
+</div>
+<div class="campo-tipo" data-tipos="enquete">
+<label for="opcoes">Opções da enquete * (uma por linha)</label>
+<textarea id="opcoes" rows="5" placeholder="Opção 1&#10;Opção 2&#10;Opção 3"></textarea>
+<small>Mínimo de 2 opções. Mudar as opções depois de começar a votação pode bagunçar o resultado.</small>
+</div>
+<div class="campo-tipo" data-tipos="mural">
+<label for="fotos">Acrescentar fotos ao mural *</label>
+<input id="fotos" type="file" accept="image/png,image/jpeg,image/webp" multiple>
+<small>Escolha quantas fotos quiser (pode repetir depois para acrescentar mais). As fotos são reduzidas automaticamente antes do envio.</small>
+<div class="fotos-editor" id="fotos-novas" aria-live="polite"></div>
+<p class="titulo-fotos" id="titulo-fotos-atuais" hidden></p>
+<div class="fotos-editor" id="fotos-atuais"></div>
+</div>
+
+<label for="texto" id="rotulo-texto">Conteúdo *</label>
+<textarea id="texto" rows="10" maxlength="16000" placeholder="Separe os parágrafos com uma linha em branco."></textarea>
+
+<div class="campo-tipo" data-tipos="artigo">
+<label for="video-extra">Vídeo do YouTube (opcional)</label>
+<input id="video-extra" type="url" placeholder="https://www.youtube.com/watch?v=...">
+</div>
+<div class="campo-tipo" data-tipos="artigo video">
+<label for="pdf">Material em PDF (opcional)</label>
+<input id="pdf" type="file" accept="application/pdf,.pdf">
+<small>Até 5 MB.</small>
+<p id="pdf-atual"></p>
+<label class="linha-checkbox"><input id="remover-pdf" type="checkbox"> Remover PDF atual</label>
+</div>
+</div>
+<div>
+<label for="categoria">Categoria *</label>
+<select id="categoria" required>
+<option>Notícias</option>
+<option>Saúde</option>
+<option>Cultura e Entretenimento</option>
+<option>Entrevistas</option>
+<option>Esportes</option>
+<option>Eventos</option>
+<option>Projetos</option>
+<option>Conquistas</option>
+</select>
+<div id="campo-data-evento" hidden>
+<label for="data-evento">Data do evento *</label>
+<input id="data-evento" type="date">
+<small>Eventos com data futura aparecem como "Próximos eventos"; os já realizados vão para "Eventos passados".</small>
+</div>
+<div id="campos-projeto" hidden>
+<label for="titulo-projeto">Título do projeto (lema)</label>
+<input id="titulo-projeto" maxlength="80" placeholder="Ex.: Cultivar para aprender">
+<label for="situacao-projeto">Situação do projeto *</label>
+<select id="situacao-projeto">
+<option value="planejado">Planejado</option>
+<option value="andamento">Em andamento</option>
+<option value="concluido">Concluído</option>
+</select>
+<label for="professores">Professores (um por linha)</label>
+<textarea id="professores" rows="3" placeholder="Ana Silva&#10;Paulo Santos"></textarea>
+<label for="turmas">Turma(s) (uma por linha)</label>
+<textarea id="turmas" rows="2" placeholder="1ª A&#10;2ª B"></textarea>
+<small>Estes dados aparecem na tabela da página Projetos. Anexe a documentação em "Material em PDF".</small>
+</div>
+<label for="imagem">Imagem de capa</label>
+<select id="imagem">
+<option value="">Automática</option>
+<option value="imagens/muda.png">Muda verde</option>
+<option value="imagens/escola.png">Escola ilustrativa</option>
+</select>
+<img class="previa-capa" id="previa-capa" src="imagens/escola.png" alt="Prévia da capa selecionada">
+<label for="capa-arquivo">Enviar outra capa</label>
+<input id="capa-arquivo" type="file" accept="image/png,image/jpeg,image/webp">
+<small>PNG, JPEG ou WebP. A imagem é reduzida automaticamente.</small>
+<label for="alt">Descrição da imagem *</label>
+<input id="alt" maxlength="250" required placeholder="Ex.: Alunos apresentando trabalhos na feira">
+<p class="nota-exemplo">"Salvar rascunho" guarda sem mostrar no blog. "Publicar" deixa visível para todos os visitantes.</p>
+</div>
+</div>
+<p class="mensagem" id="mensagem-editor" role="status"></p>
+<div class="acoes-editor">
+<button class="botao botao-contorno" type="submit" value="rascunho">Salvar rascunho</button>
+<button class="botao botao-contorno" type="button" id="visualizar-editor">Visualizar</button>
+<button class="botao" type="submit" value="publicada">Publicar</button>
+</div>
+</form>
+<dialog id="previa-editor"><button class="fechar-previa" type="button">Fechar prévia</button><article><h2 id="previa-titulo"></h2><p id="previa-resumo"></p><div id="previa-texto"></div></article></dialog></main></div></div><noscript><p class="container aviso">Ative o JavaScript para usar os recursos desta página de demonstração.</p></noscript></body></html>

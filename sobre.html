@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Blog MPL do CETI Maria Pires Lima."><title>Sobre o blog | Blog MPL</title><link rel="stylesheet" href="css/style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script><script src="js/config.js" defer></script><script src="js/dados.js" defer></script><script src="js/comum.js" defer></script><script src="js/paginas.js" defer></script>
+  <script src="js/video.js" defer></script></head><body data-pagina="sobre">  <!-- Símbolos SVG locais: os ícones funcionam sem internet ou bibliotecas. -->
+  <svg class="banco-icones" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="livro" viewBox="0 0 48 48"><path d="M24 12C17 7 10 7 4 9v29c7-2 14-1 20 3 6-4 13-5 20-3V9c-6-2-13-2-20 3ZM24 12v29M9 15h9m-9 6h9m-9 6h9m12-12h9m-9 6h9m-9 6h9"/></symbol>
+    <symbol id="calendario" viewBox="0 0 48 48"><rect x="5" y="9" width="38" height="34" rx="3"/><path d="M5 19h38M15 4v11M33 4v11M13 26h3m6 0h3m6 0h3m-21 7h3m6 0h3m6 0h3"/></symbol>
+    <symbol id="lampada" viewBox="0 0 48 48"><path d="M17 31c0-5-6-7-6-15a13 13 0 0 1 26 0c0 8-6 10-6 15ZM17 36h14m-12 5h10M24 0v3M3 17H0m48 0h-3M6 3l4 5m32-5-4 5M20 31l-2-12 6 4 6-4-2 12"/></symbol>
+    <symbol id="trofeu" viewBox="0 0 48 48"><path d="M14 5h20v12c0 10-20 10-20 0ZM14 9H5v7c0 7 6 10 11 10M34 9h9v7c0 7-6 10-11 10M24 26v12m-10 5h20l-3-5H17Z"/><path d="m24 10 2 4 5 1-4 3 1 5-4-3-4 3 1-5-4-3 5-1Z"/></symbol>
+    <symbol id="busca" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></symbol>
+    <symbol id="seta" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="folha" viewBox="0 0 40 44"><path d="M9 39 3 43V6a4 4 0 0 1 4-4h26a4 4 0 0 1 4 4v33H9Z"/><path d="M15 29C7 15 20 12 29 10c1 14-5 22-14 19ZM10 35l15-18"/></symbol>
+  </svg>
+
+  <a href="#conteudo" class="pular-conteudo">Pular para o conteúdo</a>
+  <header class="cabecalho">
+    <div class="container cabecalho-conteudo">
+      <a class="marca" href="index.html" aria-label="Blog MPL, página inicial">
+        <img class="marca-brasao" src="imagens/brasao-mpl.png" alt="" width="48" height="48">
+        <span><strong>Blog MPL</strong><span>CETI MARIA PIRES LIMA</span></span>
+      </a>
+      <button class="botao-menu botao-icone" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+      <nav id="menu-principal" class="menu" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="categoria.html?categoria=Not%C3%ADcias" data-menu="noticias">Notícias</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="conquistas.html">Conquistas</a>
+        <a href="sobre.html" class="ativo" aria-current="page">Sobre</a>
+      </nav>
+      <button class="botao-icone abrir-busca" type="button" aria-label="Abrir busca" aria-expanded="false" aria-controls="painel-busca"><svg aria-hidden="true"><use href="#busca"/></svg></button>
+    </div>
+    <form id="painel-busca" class="container formulario-busca" role="search" hidden>
+      <label for="termo-busca">Pesquisar publicações</label>
+      <div><input id="termo-busca" type="search" placeholder="O que você quer encontrar?" maxlength="100"><button class="botao" type="submit">Buscar</button></div>
+      <p id="resultado-busca" role="status"></p>
+    </form>
+  </header>
+
+<main id="conteudo" class="container pagina-interna"><header class="faixa-pagina sobre-abertura"><div><p class="etiqueta">Sobre o blog</p><h1>Nossa escola,<br>nossas histórias.</h1><p>Um espaço produzido pelos alunos para compartilhar o cotidiano do CETI Maria Pires Lima.</p></div><img src="imagens/escola.png" alt="Imagem ilustrativa de uma escola com jardim"><!-- Vídeo de boas-vindas (js/video.js) --><div class="video-sobre" id="video-sobre" hidden></div></header><div class="sobre-colunas"><section><h2>Nosso objetivo</h2><p>Reunir notícias, projetos, eventos e conquistas, valorizando a participação dos estudantes e a comunicação com a comunidade escolar.</p></section><section><h2>Quem participa</h2><p>Os alunos desenvolvem o sistema e organizam a produção dos conteúdos com acompanhamento da professora Hélita Querino.</p></section><section><h2>Como colaborar</h2><p>Converse com a equipe do projeto na escola para sugerir pautas e compartilhar atividades. As informações passam por revisão antes da publicação.</p></section></div><section class="secao-sobre"><h2>Equipe do blog</h2><div class="sobre-colunas"><div><h3>Redação</h3><p>Pesquisa os assuntos e escreve as matérias.</p></div><div><h3>Edição</h3><p>Revisa textos e organiza as publicações.</p></div><div><h3>Tecnologia</h3><p>Programa, testa e mantém o sistema.</p></div></div></section><p class="nota-exemplo">Projeto em desenvolvimento. As imagens e as matérias de exemplo são demonstrativas.</p><a class="botao" href="login.html">Área da equipe</a></main>  <footer class="rodape"><div class="container rodape-conteudo"><p>© 2026 Blog MPL · Todos os direitos reservados. <span aria-hidden="true">·</span> <a class="link-equipe" href="login.html">Área do ADM</a></p></div></footer>
+
+<noscript><p class="container aviso">Ative o JavaScript para usar os recursos desta página de demonstração.</p></noscript></body></html>
